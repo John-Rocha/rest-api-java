@@ -22,23 +22,23 @@ public class ContatoREST {
     private RepositorioContato repositorio;
 
     @GetMapping
-    public List<Contato> listar() {
+    public List<Contato> getAll() {
         return repositorio.findAll();
     }
 
     @PostMapping
-    public void salvar(@RequestBody Contato contato) {
+    public void save(@RequestBody Contato contato) {
         repositorio.save(contato);
     }
 
     @PutMapping
-    public void alterar(@RequestBody Contato contato) {
+    public void update(@RequestBody Contato contato) {
         if (contato.getId() > 0)
             repositorio.save(contato);
     }
 
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         repositorio.deleteById(id);
     }
 }
